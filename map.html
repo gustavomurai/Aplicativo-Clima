@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Mapa</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-page="map" class="theme-dark">
+  <div class="app">
+
+    <aside class="sidebar">
+      <div class="sidebar-inner">
+
+        <div class="sidebar-logo">
+          <img src="images/logo-wind.svg" class="logo-icon">
+        </div>
+
+        <nav class="sidebar-nav">
+          <a href="index.html" class="nav-item">
+            <span class="nav-icon-wrapper"><img src="images/nav-weather.svg" class="nav-icon"></span>
+            <span class="nav-label">Clima</span>
+          </a>
+
+          <a href="cities.html" class="nav-item">
+            <span class="nav-icon-wrapper"><img src="images/nav-cities.svg" class="nav-icon"></span>
+            <span class="nav-label">Cidades</span>
+          </a>
+
+          <a href="map.html" class="nav-item nav-item-active">
+            <span class="nav-icon-wrapper"><img src="images/nav-map.svg" class="nav-icon"></span>
+            <span class="nav-label">Mapa</span>
+          </a>
+
+          <a href="settings.html" class="nav-item">
+            <span class="nav-icon-wrapper"><img src="images/nav-settings.svg" class="nav-icon"></span>
+            <span class="nav-label">Config</span>
+          </a>
+        </nav>
+
+      </div>
+    </aside>
+
+    <main class="main">
+
+      <header class="topbar">
+        <h1 class="app-title">Mapa</h1>
+        <p class="app-subtitle">Mapa da última cidade pesquisada</p>
+      </header>
+
+      <section class="grid-simple">
+        <section class="card">
+          <div class="card-header"><h2 id="map-city-title">Cidade atual</h2></div>
+
+          <div class="map-wrapper">
+            <iframe id="map-frame" loading="lazy"></iframe>
+          </div>
+
+          <p class="helper-text">O mapa usa a última cidade consultada.</p>
+        </section>
+      </section>
+
+      <!-- FOOTER -->
+      <footer class="footer">
+  Projeto desenvolvido por <strong>Gustavo Cerqueira Murai</strong> —
+  <a href="https://github.com/gustavomurai" target="_blank" class="footer-link">Github</a> |
+  <a href="https://www.linkedin.com/in/gustavomurai/" target="_blank" class="footer-link">LinkedIn</a>
+</footer>
+
+
+    </main>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
