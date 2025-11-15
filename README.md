@@ -1,5 +1,7 @@
-# 🌦️ Weather Dashboard — Painel de Clima  
+# 🌦️ Aplicativo Clima - 
 Um painel moderno e refinado de previsão do tempo, desenvolvido em **HTML, CSS e JavaScript**, utilizando a **OpenWeather API** e inspirado em interfaces premium de clima.
+
+link do projeto: https://gustavomurai.github.io/Aplicativo-Clima/
 
 ---
 
