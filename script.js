@@ -1,6 +1,3 @@
-// ======================================================
-// CONFIGURAÇÕES GERAIS
-// ======================================================
 const API_KEY = "aadde3d1e58c1e6d0eaa27a896818e4b";
 
 const GEO_URL = "https://api.openweathermap.org/geo/1.0/direct";
@@ -18,9 +15,6 @@ function getPage() {
   return document.body.dataset.page || "";
 }
 
-// ======================================================
-// STORAGE
-// ======================================================
 function save(key, value) {
   localStorage.setItem(key, JSON.stringify(value));
 }
@@ -35,9 +29,6 @@ function load(key, defaultValue = null) {
   }
 }
 
-// ======================================================
-// FORMATAÇÃO DE DATAS
-// ======================================================
 function toLocalDate(unix, tz) {
   return new Date((unix + tz) * 1000);
 }
@@ -61,9 +52,6 @@ function msToKmh(ms) {
   return Math.round(ms * 3.6);
 }
 
-// ======================================================
-// UNIDADE E TEMA
-// ======================================================
 function getUnit() {
   return load(STORAGE.UNIT, "metric");
 }
@@ -78,9 +66,6 @@ function applyTheme() {
   document.body.classList.add(theme === "light" ? "theme-light" : "theme-dark");
 }
 
-// ======================================================
-// API
-// ======================================================
 async function searchCity(name, limit = 5) {
   const url = `${GEO_URL}?q=${encodeURIComponent(name)}&limit=${limit}&appid=${API_KEY}`;
   const res = await fetch(url);
@@ -116,9 +101,6 @@ function iconUrl(code) {
   return `https://openweathermap.org/img/wn/${code}@2x.png`;
 }
 
-// ======================================================
-// FAVORITOS
-// ======================================================
 function favoritesList() {
   return load(STORAGE.FAVORITES, []);
 }
@@ -137,33 +119,22 @@ function removeFavorite(name, country) {
   save(STORAGE.FAVORITES, list);
 }
 
-// ======================================================
-// RENDER DASHBOARD
-// ======================================================
 function renderCurrent(city, now, tz) {
-  // city-name SEMPRE existe na home; se não tiver, nem é a página certa
   const nameEl = document.getElementById("city-name");
   if (!nameEl) return;
 
   nameEl.textContent = `${city.name}, ${city.country}`;
 
   const tempEl = document.getElementById("current-temp");
-  if (tempEl) {
-    tempEl.textContent = `${Math.round(now.main.temp)}${unitSymbol()}`;
-  }
+  if (tempEl) tempEl.textContent = `${Math.round(now.main.temp)}${unitSymbol()}`;
 
   const dateEl = document.getElementById("current-date");
-  if (dateEl) {
-    dateEl.textContent = formatDay(now.dt, tz);
-  }
+  if (dateEl) dateEl.textContent = formatDay(now.dt, tz);
 
   const iconEl = document.getElementById("current-icon");
   if (iconEl && now.weather && now.weather[0]) {
     iconEl.src = iconUrl(now.weather[0].icon);
   }
-
-  // Se no futuro você quiser adicionar mais infos (sensação, mínima, máxima, etc.),
-  // é só criar os elementos no HTML e ligar aqui com a mesma lógica de "se existir, preenche".
 }
 
 function renderHourly(forecast, tz) {
@@ -172,7 +143,6 @@ function renderHourly(forecast, tz) {
 
   box.innerHTML = "";
 
-  // próximas 8 previsões (24h em passos de 3h)
   forecast.list.slice(0, 8).forEach(f => {
     const div = document.createElement("div");
     div.className = "hour-item";
@@ -219,7 +189,6 @@ function renderWeek(forecast, tz) {
   days.forEach((d, i) => {
     const div = document.createElement("div");
     div.className = "week-item";
-
     div.innerHTML = `
       <div class="week-left">
         <div class="week-day">
@@ -228,13 +197,11 @@ function renderWeek(forecast, tz) {
         <img src="${iconUrl(d.icon)}" class="week-icon">
         <div class="week-desc">${d.desc}</div>
       </div>
-
       <div class="week-right">
         <span class="week-temp-max">${Math.round(d.max)}${unitSymbol()}</span>
         <span class="week-temp-min">${Math.round(d.min)}${unitSymbol()}</span>
       </div>
     `;
-
     box.appendChild(div);
   });
 }
@@ -244,24 +211,17 @@ function renderAir(now, forecast) {
   if (!feels) return;
 
   feels.textContent = `${Math.round(now.main.feels_like)}${unitSymbol()}`;
-  document.getElementById("air-humidity").textContent =
-    `${now.main.humidity}%`;
-  document.getElementById("air-wind").textContent =
-    `${msToKmh(now.wind.speed)} km/h`;
+  document.getElementById("air-humidity").textContent = `${now.main.humidity}%`;
+  document.getElementById("air-wind").textContent = `${msToKmh(now.wind.speed)} km/h`;
 
   const rain = forecast.list[0].pop ?? 0;
-  document.getElementById("air-rain").textContent =
-    `${Math.round(rain * 100)}%`;
+  document.getElementById("air-rain").textContent = `${Math.round(rain * 100)}%`;
 }
 
-// ======================================================
-// BUSCA + SUGESTÕES
-// ======================================================
 function setupSearch() {
   const input = document.getElementById("search-input");
   const form = document.getElementById("search-form");
   const list = document.getElementById("suggestions");
-
   if (!input || !form || !list) return;
 
   let timer = null;
@@ -284,8 +244,7 @@ function setupSearch() {
       cities.forEach(c => {
         const div = document.createElement("div");
         div.className = "suggestion-item";
-        div.textContent =
-          `${c.name}, ${c.state ? c.state + ", " : ""}${c.country}`;
+        div.textContent = `${c.name}, ${c.state ? c.state + ", " : ""}${c.country}`;
         div.onclick = () => {
           input.value = c.name;
           list.style.display = "none";
@@ -302,9 +261,6 @@ function setupSearch() {
   });
 }
 
-// ======================================================
-// CARREGAR CLIMA
-// ======================================================
 async function loadWeather(cityInput) {
   let city = cityInput;
 
@@ -321,7 +277,6 @@ async function loadWeather(cityInput) {
   addFavorite(city);
 
   const { now, forecast } = await fetchWeather(city.lat, city.lon);
-
   const tz = now.timezone || forecast.city.timezone;
 
   renderCurrent(city, now, tz);
@@ -330,15 +285,11 @@ async function loadWeather(cityInput) {
   renderAir(now, forecast);
 }
 
-// ======================================================
-// PÁGINA: CIDADES
-// ======================================================
 function renderCities() {
   const box = document.getElementById("cities-list");
   if (!box) return;
 
   const favs = favoritesList();
-
   if (!favs.length) {
     box.innerHTML = `<p class="helper-text">Nenhuma cidade salva.</p>`;
     return;
@@ -348,13 +299,11 @@ function renderCities() {
   favs.forEach(c => {
     const row = document.createElement("div");
     row.className = "city-row";
-
     row.innerHTML = `
       <div class="city-row-main">
         <div class="city-row-name">${c.name}, ${c.country}</div>
         <div class="city-row-sub">${c.state || "Salvo"}</div>
       </div>
-
       <div class="city-row-actions">
         <button class="btn btn-primary">Usar</button>
         <button class="btn btn-danger">Remover</button>
@@ -377,9 +326,6 @@ function renderCities() {
   });
 }
 
-// ======================================================
-// PÁGINA: MAPA
-// ======================================================
 function renderMap() {
   const frame = document.getElementById("map-frame");
   if (!frame) return;
@@ -395,16 +341,12 @@ function renderMap() {
     `https://www.openstreetmap.org/export/embed.html?bbox=${lon - 0.2},${lat - 0.2},${lon + 0.2},${lat + 0.2}&layer=mapnik&marker=${lat},${lon}`;
 }
 
-// ======================================================
-// PÁGINA: CONFIGURAÇÕES
-// ======================================================
 function initSettings() {
   const unit = getUnit();
   const theme = load(STORAGE.THEME, "dark");
 
   document.getElementById("unit-metric").checked = unit === "metric";
   document.getElementById("unit-imperial").checked = unit === "imperial";
-
   document.getElementById("theme-dark").checked = theme === "dark";
   document.getElementById("theme-light").checked = theme === "light";
 
@@ -415,16 +357,12 @@ function initSettings() {
 
     save(STORAGE.UNIT, unitValue);
     save(STORAGE.THEME, themeValue);
-
     applyTheme();
 
     alert("Configurações salvas!");
   };
 }
 
-// ======================================================
-// INICIALIZAÇÃO GERAL
-// ======================================================
 document.addEventListener("DOMContentLoaded", () => {
   applyTheme();
 

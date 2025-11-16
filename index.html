@@ -6,10 +6,7 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body data-page="dashboard" class="theme-dark">
-
   <div class="app">
-
-    <!-- SIDEBAR -->
     <aside class="sidebar">
       <div class="sidebar-inner">
         <div class="sidebar-logo">
@@ -19,28 +16,28 @@
         <nav class="sidebar-nav">
           <a href="index.html" class="nav-item nav-item-active">
             <span class="nav-icon-wrapper">
-              <img src="images/nav-weather.svg" class="nav-icon">
+              <img src="images/nav-weather.svg" class="nav-icon" alt="">
             </span>
             <span class="nav-label">Clima</span>
           </a>
 
           <a href="cities.html" class="nav-item">
             <span class="nav-icon-wrapper">
-              <img src="images/nav-cities.svg" class="nav-icon">
+              <img src="images/nav-cities.svg" class="nav-icon" alt="">
             </span>
             <span class="nav-label">Cidades</span>
           </a>
 
           <a href="map.html" class="nav-item">
             <span class="nav-icon-wrapper">
-              <img src="images/nav-map.svg" class="nav-icon">
+              <img src="images/nav-map.svg" class="nav-icon" alt="">
             </span>
             <span class="nav-label">Mapa</span>
           </a>
 
           <a href="settings.html" class="nav-item">
             <span class="nav-icon-wrapper">
-              <img src="images/nav-settings.svg" class="nav-icon">
+              <img src="images/nav-settings.svg" class="nav-icon" alt="">
             </span>
             <span class="nav-label">Config</span>
           </a>
@@ -48,24 +45,16 @@
       </div>
     </aside>
 
-    <!-- MAIN -->
     <main class="main">
-
-      <!-- BARRA DE BUSCA + SUGESTÕES -->
       <header class="topbar home-topbar">
         <form id="search-form" class="search-form">
-          <img src="images/icon-search.svg" class="search-icon-img">
+          <img src="images/icon-search.svg" class="search-icon-img" alt="">
           <input id="search-input" placeholder="Buscar por cidade" autocomplete="off">
         </form>
-
-        <!-- AQUI DENTRO DO HEADER: volta pro lugar certo -->
         <div id="suggestions" class="suggestions"></div>
       </header>
 
-      <!-- GRID HOME -->
       <section class="grid-home">
-
-        <!-- CLIMA ATUAL -->
         <section class="card-current">
           <div>
             <div id="city-name" class="city-name">--</div>
@@ -81,7 +70,6 @@
           </div>
         </section>
 
-        <!-- PREVISÃO DAS PRÓXIMAS HORAS -->
         <section class="card card-today">
           <div class="card-header">
             <h2>Previsão das próximas horas</h2>
@@ -89,14 +77,12 @@
           <div id="hourly-list" class="hourly-list"></div>
         </section>
 
-        <!-- CONDIÇÃO DO AR -->
         <section class="card card-air">
           <div class="card-header">
             <h2>Condição do ar</h2>
           </div>
 
           <div class="air-grid">
-
             <div class="air-item">
               <div class="air-title">
                 <img src="images/air-temp.svg" class="air-icon" alt="">
@@ -128,28 +114,22 @@
               </div>
               <div id="air-humidity" class="air-value">--%</div>
             </div>
-
           </div>
         </section>
 
-        <!-- PREVISÃO SEMANAL -->
         <section class="card card-week">
           <div class="card-header">
             <h2>Previsão para 5 dias</h2>
           </div>
-
           <div id="week-list" class="week-list"></div>
         </section>
-
       </section>
 
-      <!-- FOOTER -->
       <footer class="footer">
         Projeto desenvolvido por <strong>Gustavo Cerqueira Murai</strong> —
         <a href="https://github.com/gustavomurai" target="_blank" class="footer-link">Github</a> |
         <a href="https://www.linkedin.com/in/gustavomurai/" target="_blank" class="footer-link">LinkedIn</a>
       </footer>
-
     </main>
   </div>
 

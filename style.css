@@ -1,6 +1,3 @@
-/* =========================================================
-   RESET
-========================================================= */
 *,
 *::before,
 *::after {
@@ -14,9 +11,6 @@ body {
   height: 100%;
 }
 
-/* =========================================================
-   BASE / TEMA
-========================================================= */
 :root {
   --bg-main: #050814;
   --bg-sidebar: #050814;
@@ -43,17 +37,11 @@ body.theme-light {
   color: #111827;
 }
 
-/* =========================================================
-   LAYOUT PRINCIPAL
-========================================================= */
 .app {
   display: flex;
   min-height: 100vh;
 }
 
-/* =========================================================
-   SIDEBAR
-========================================================= */
 .sidebar {
   width: 100px;
   background: transparent;
@@ -62,7 +50,6 @@ body.theme-light {
   justify-content: center;
 }
 
-/* Pilar claro arredondado */
 .sidebar-inner {
   width: 100%;
   background: var(--bg-sidebar-track);
@@ -145,11 +132,6 @@ body.theme-light {
   color: #ffffff;
 }
 
-/* SEM barrinha azul lateral aqui */
-
-/* =========================================================
-   MAIN
-========================================================= */
 .main {
   flex: 1;
   padding: 28px 40px;
@@ -176,15 +158,11 @@ body.theme-light {
   margin-top: 4px;
 }
 
-/* Topbar da home */
 .home-topbar {
   justify-content: flex-start;
-  position: relative; /* para ancorar as sugestões */
+  position: relative;
 }
 
-/* =========================================================
-   BARRA DE BUSCA
-========================================================= */
 .search-form {
   width: 100%;
   display: flex;
@@ -211,7 +189,6 @@ body.theme-light {
   font-size: 15px;
 }
 
-/* Sugestões de cidades – flutuando logo abaixo da barra */
 .suggestions {
   position: absolute;
   left: 0;
@@ -236,9 +213,6 @@ body.theme-light {
   background: #0b1120;
 }
 
-/* =========================================================
-   GRIDS
-========================================================= */
 .grid-home {
   display: grid;
   grid-template-columns: minmax(0, 2.1fr) minmax(0, 1.2fr);
@@ -252,9 +226,6 @@ body.theme-light {
   gap: 16px;
 }
 
-/* =========================================================
-   CARDS
-========================================================= */
 .card {
   background: var(--bg-card);
   border-radius: var(--radius-card);
@@ -272,9 +243,6 @@ body.theme-light {
   font-weight: 500;
 }
 
-/* =========================================================
-   CLIMA ATUAL
-========================================================= */
 .card-current {
   grid-column: 1 / 2;
   grid-row: 1 / 2;
@@ -313,7 +281,6 @@ body.theme-light {
   justify-content: center;
 }
 
-/* Ícone do clima com glow e animação suave */
 .current-big-icon {
   width: 120px;
   height: 120px;
@@ -323,7 +290,8 @@ body.theme-light {
 }
 
 @keyframes weather-float {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0);
   }
   50% {
@@ -331,9 +299,6 @@ body.theme-light {
   }
 }
 
-/* =========================================================
-   PRÓXIMAS HORAS
-========================================================= */
 .card-today {
   grid-column: 1 / 2;
   grid-row: 2 / 3;
@@ -375,9 +340,6 @@ body.theme-light {
   font-weight: 500;
 }
 
-/* =========================================================
-   CONDIÇÃO DO AR
-========================================================= */
 .card-air {
   grid-column: 1 / 2;
   grid-row: 3 / 4;
@@ -414,9 +376,6 @@ body.theme-light {
   font-weight: 600;
 }
 
-/* =========================================================
-   PREVISÃO 5 DIAS
-========================================================= */
 .card-week {
   grid-column: 2 / 3;
   grid-row: 1 / 4;
@@ -468,7 +427,6 @@ body.theme-light {
   gap: 10px;
 }
 
-/* Máxima laranja, mínima azul claro */
 .week-temp-max {
   font-weight: 600;
   color: #f97316;
@@ -480,15 +438,11 @@ body.theme-light {
   font-size: 14px;
 }
 
-/* Destaque do dia de hoje (primeiro item) – sem barrinha azul lateral */
 .week-list .week-item:first-child {
   background: #111827;
   box-shadow: 0 0 0 1px rgba(59, 130, 246, 0.55);
 }
 
-/* =========================================================
-   LISTA DE CIDADES
-========================================================= */
 .cities-list {
   display: flex;
   flex-direction: column;
@@ -526,9 +480,6 @@ body.theme-light {
   gap: 8px;
 }
 
-/* =========================================================
-   BOTÕES
-========================================================= */
 .btn {
   border-radius: 999px;
   border: none;
@@ -556,9 +507,6 @@ body.theme-light {
   color: #fecaca;
 }
 
-/* =========================================================
-   CONFIGURAÇÕES
-========================================================= */
 .settings-card {
   padding-top: 20px;
   padding-bottom: 20px;
@@ -598,9 +546,6 @@ body.theme-light {
   border-radius: var(--radius-card);
 }
 
-/* =========================================================
-   MAPA
-========================================================= */
 .map-wrapper {
   width: 100%;
   height: 440px;
@@ -615,18 +560,12 @@ body.theme-light {
   border: none;
 }
 
-/* =========================================================
-   TEXTOS AUXILIARES
-========================================================= */
 .helper-text {
   margin-top: 10px;
   font-size: 13px;
   color: var(--text-soft);
 }
 
-/* =========================================================
-   RESPONSIVO
-========================================================= */
 @media (max-width: 1024px) {
   .grid-home {
     grid-template-columns: minmax(0, 1fr);
@@ -655,7 +594,6 @@ body.theme-light {
   }
 }
 
-/* FOOTER */
 .footer {
   width: 100%;
   text-align: center;
