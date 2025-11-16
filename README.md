@@ -1,94 +1,123 @@
-# 🌦️ Aplicativo Clima - 
-Um painel moderno e refinado de previsão do tempo, desenvolvido em **HTML, CSS e JavaScript**, utilizando a **OpenWeather API** e inspirado em interfaces premium de clima.
+# 🌦️ **Aplicativo Clima — Dashboard Moderno de Previsão do Tempo**
+### Interface premium • Layout responsivo • Busca inteligente • API OpenWeather  
+<br>
 
-link do projeto: https://gustavomurai.github.io/Aplicativo-Clima/
-
----
-
-## 📌 Sobre o Projeto  
-Este projeto é um **dashboard completo de clima**, com experiência intuitiva, animações suaves e design profissional.  
-Ele permite:
-
-- Buscar cidades em tempo real  
-- Ver clima atual com ícones dinâmicos  
-- Previsão por hora (hoje)  
-- Previsão para 7 dias  
-- Visualizar mapa da cidade pesquisada  
-- Salvar cidades favoritas  
-- Ajustar preferências de unidade e tema  
-- Armazenamento local via **localStorage**
+🔗 **Acesse o projeto:**  
+➡️ https://gustavomurai.github.io/Aplicativo-Clima/
 
 ---
 
-## 🚀 Funcionalidades
+## 🖼️ **Demonstração**
 
-### 🔍 Busca Inteligente  
-- Autocomplete com resultados da OpenWeather  
+> *(Se quiser, posso gerar um GIF bonito do seu projeto.)*
+
+---
+
+## 📌 **Sobre o Projeto**
+
+O **Aplicativo Clima** é um painel moderno de previsão do tempo, totalmente responsivo, feito para oferecer:
+
+- Experiência fluida  
+- Visual premium  
+- Acesso rápido às informações mais importantes  
+- Uso inteligente da OpenWeather API  
+- Navegação completa com sidebar e modo mobile (menu deslizante)
+
+Desenvolvido usando **HTML, CSS e JavaScript puro**, com foco em **UI/UX, responsividade e desempenho**.
+
+---
+
+## 🚀 **Principais Funcionalidades**
+
+### 🔍 **Busca Inteligente**
+- Autocomplete com OpenWeather Geo API  
 - Sugestões instantâneas  
-- Carregamento automático do clima  
+- Seleção rápida da cidade  
 
-### 🌡️ Clima Atual  
+### 🌡️ **Clima Atual**
 - Temperatura  
 - Sensação térmica  
 - Umidade  
-- Velocidade do vento  
-- Máxima e mínima  
+- Vento  
+- Condições climáticas  
 - Ícone dinâmico  
 
-### 🕒 Previsão de Hoje  
-- Previsão por horário  
+### 🕒 **Previsão por Hora**
+- Próximas 8 horas  
 - Horários localizados  
-- Ícones e temperatura  
+- Ícones e temperaturas  
 
-### 📅 Previsão de 7 Dias  
-- Temperaturas mínima e máxima  
-- Ícone do clima  
-- Descrição resumida  
+### 📅 **Previsão Semanal**
+- Mínima e máxima  
+- Descrição  
+- Ícone correspondente  
 
-### ⭐ Cidades Favoritas  
+### ⭐ **Cidades Favoritas**
 - Salvamento automático  
-- Botão para usar  
-- Remoção rápida  
+- Remoção ágil  
+- Persistência via LocalStorage  
 
-### 🧭 Mapa  
-- Mapa via **OpenStreetMap**  
+### 🧭 **Mapa**
+- Utiliza OpenStreetMap  
 - Centralizado na última cidade pesquisada  
 
-### 🎨 Configurações  
+### 🎨 **Configurações**
 - Tema claro/escuro  
-- Unidade °C / °F  
+- Unidade: °C / °F  
 - Preferências salvas no navegador  
 
-### 💾 Persistência  
-Tudo salvo em **localStorage**:
+---
 
-- Última cidade  
-- Cidades favoritas  
-- Tema  
-- Unidade  
+## 📱 **Responsividade (Mobile, Tablet e Desktop)**
+
+- **Menu lateral fixo no desktop**  
+- **Menu deslizante no mobile**, com:
+  - Botão flutuante lateral (bolinha/seta)  
+  - Overlay escuro  
+  - Sidebar reaproveitada  
+- Layout reorganizado no mobile:
+  - Cards em coluna  
+  - “Condição do ar” em **grade 2x2**  
+  - Ícones e textos otimizados para telas pequenas  
+- Layout centralizado e consistente  
 
 ---
 
-## 🖼️ Design  
-O projeto segue:
+## 🗂️ **Arquitetura das Páginas**
 
-- Bordas arredondadas de **17px**  
-- Sem sombras (estilo sólido)  
-- Glow azul no hover  
-- Componentes com fundo azul escuro premium  
-- Tipografia **SF Pro Display**  
-- Sidebar vertical moderna com ícones SVG  
-- Cartões responsivos
+| Página | Função |
+|-------|--------|
+| `index.html` | Dashboard principal |
+| `cities.html` | Cidades favoritas |
+| `map.html` | Mapa da última cidade |
+| `settings.html` | Preferências do usuário |
+| `script.js` | Lógica do app, APIs e interações |
+| `style.css` | Estilização e responsividade |
+| `images/` | Ícones e elementos visuais |
 
 ---
 
-## 🧩 Tecnologias
+## 🧠 **Tecnologias Utilizadas**
 
-| Tecnologia | Função |
+| Tecnologia | Papel |
 |-----------|--------|
-| HTML5 | Estrutura das páginas |
-| CSS3 | Estilo, responsividade e UI |
-| JavaScript | Lógica, API, renderização dinâmica |
-| OpenWeather API | Dados de clima |
-| OpenStreetMap | Mapa interativo |
-| LocalStorage | Persistência local |
+| **HTML5** | Estrutura |
+| **CSS3** | UI, responsividade, animações |
+| **JavaScript Vanilla** | Lógica e integração de APIs |
+| **OpenWeather API** | Dados climáticos |
+| **OpenStreetMap** | Mapa |
+| **LocalStorage** | Persistência local |
+
+---
+
+## 📦 **Como Rodar o Projeto Localmente**
+
+```bash
+# Clone o repositório
+git clone https://github.com/gustavomurai/Aplicativo-Clima
+
+# Acesse a pasta
+cd Aplicativo-Clima
+
+# Abra o projeto no navegador
+open index.html
