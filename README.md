@@ -2,8 +2,8 @@
 ### Interface premium • Layout responsivo • Busca inteligente • API OpenWeather  
 <br>
 
-###🔗 **Acesse o projeto:**  
-###➡️ https://gustavomurai.github.io/Aplicativo-Clima/
+**🔗 **Acesse o projeto:** ** 
+**➡️ https://gustavomurai.github.io/Aplicativo-Clima/**
 
 ---
 
