@@ -11,6 +11,11 @@ body {
   height: 100%;
 }
 
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+
 :root {
   --bg-main: #050814;
   --bg-sidebar: #050814;
@@ -186,7 +191,7 @@ body.theme-light {
   outline: none;
   background: transparent;
   color: inherit;
-  font-size: 15px;
+  font-size: 16px;
 }
 
 .suggestions {
