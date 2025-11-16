@@ -363,6 +363,41 @@ function initSettings() {
   };
 }
 
+/* ==========================================================
+   MENU MOBILE — LÓGICA DO BOTÃO, OVERLAY E FECHAMENTO
+========================================================== */
+
+function setupMobileMenu() {
+  const btn = document.getElementById("mobile-menu-toggle");
+  const overlay = document.getElementById("mobile-menu-overlay");
+  const sidebar = document.querySelector(".sidebar");
+
+  if (!btn || !overlay || !sidebar) return;
+
+  function openMenu() {
+    document.body.classList.add("menu-open");
+  }
+
+  function closeMenu() {
+    document.body.classList.remove("menu-open");
+  }
+
+  btn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    document.body.classList.toggle("menu-open");
+  });
+
+  overlay.addEventListener("click", closeMenu);
+
+  sidebar.addEventListener("click", (e) => {
+    if (e.target.closest(".nav-item")) {
+      closeMenu();
+    }
+  });
+}
+
+/* ========================================================== */
+
 document.addEventListener("DOMContentLoaded", () => {
   applyTheme();
 
@@ -377,4 +412,6 @@ document.addEventListener("DOMContentLoaded", () => {
   if (page === "cities") renderCities();
   if (page === "map") renderMap();
   if (page === "settings") initSettings();
+
+  setupMobileMenu();
 });

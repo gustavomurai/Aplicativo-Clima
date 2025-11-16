@@ -566,10 +566,23 @@ body.theme-light {
   color: var(--text-soft);
 }
 
+/* BOTÃO MOBILE & OVERLAY (estado base: escondidos) */
+.mobile-menu-toggle {
+  display: none;
+}
+
+.mobile-menu-overlay {
+  display: none;
+}
+
+/* =========================================
+   RESPONSIVO - TABLET / TELAS MÉDIAS
+========================================= */
 @media (max-width: 1024px) {
   .grid-home {
     grid-template-columns: minmax(0, 1fr);
     grid-template-rows: auto;
+    gap: 16px;
   }
 
   .card-current,
@@ -578,19 +591,228 @@ body.theme-light {
   .card-week {
     grid-column: 1 / -1;
   }
+
+  .card-current {
+    margin-bottom: 4px;
+  }
 }
 
+/* =========================================
+   RESPONSIVO - MOBILE
+========================================= */
 @media (max-width: 768px) {
+  .app {
+    flex-direction: column;
+  }
+
+  /* Sidebar vira menu deslizante, mas mantém o visual */
   .sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    padding-top: 12px;
+    transform: translateX(-110%);
+    transition: transform 0.22s ease-out;
+    z-index: 200;
+  }
+
+  body.menu-open .sidebar {
+    transform: translateX(0);
+  }
+
+  /* Overlay escuro quando o menu está aberto */
+  .mobile-menu-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    z-index: 150;
     display: none;
   }
 
+  body.menu-open .mobile-menu-overlay {
+    display: block;
+  }
+
+  /* Botão bolinha com setinha no meio da esquerda */
+  .mobile-menu-toggle {
+    display: flex;
+    position: fixed;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    border: none;
+    background: var(--bg-card-inner);
+    color: #ffffff;
+    font-size: 18px;
+    align-items: center;
+    justify-content: center;
+    z-index: 250;
+    cursor: pointer;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.5);
+  }
+  
+  .mobile-menu-toggle {
+      left: 10px;
+      transition: left 0.22s ease-out;
+  }
+  
+  body.menu-open .mobile-menu-toggle {
+  left: 110px;
+  }
+
   .main {
-    padding: 16px;
+    padding: 16px 14px 24px;
+    gap: 18px;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  /* grid da home vira coluna, estilo app mobile */
+  .grid-home {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .card {
+    padding: 16px 14px;
+  }
+
+  .home-topbar {
+    margin-bottom: 4px;
+  }
+
+  .search-form {
+    padding: 10px 14px;
+  }
+
+  .card-current {
+    flex-direction: row;
+    align-items: center;
+    padding-top: 0;
+  }
+
+  .city-name {
+    font-size: 24px;
+  }
+
+  .current-temp {
+    font-size: 56px;
+  }
+
+  .current-big-icon {
+    width: 96px;
+    height: 96px;
+  }
+
+  .hourly-list {
+    gap: 10px;
+  }
+
+  .hour-item {
+    min-width: 80px;
+    padding: 8px 8px 10px;
+  }
+
+  /* Condição do ar em 2x2 no mobile */
+  .air-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .week-item {
+    padding: 10px 12px;
+  }
+
+  .week-day {
+    min-width: 68px;
+  }
+
+  .settings-row-large {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .settings-option-large span {
+    font-size: 20px;
   }
 
   .settings-save-btn {
     margin-right: 4px;
+  }
+
+  .map-wrapper {
+    height: 360px;
+  }
+
+  .city-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .city-row-actions {
+    align-self: flex-end;
+  }
+
+  .footer {
+    margin-top: 24px;
+    padding: 14px 8px;
+    font-size: 13px;
+  }
+}
+
+/* =========================================
+   RESPONSIVO - MOBILE PEQUENO
+========================================= */
+@media (max-width: 480px) {
+  .app-title {
+    font-size: 22px;
+  }
+
+  .app-subtitle {
+    font-size: 13px;
+  }
+
+  .city-name {
+    font-size: 22px;
+  }
+
+  .current-temp {
+    font-size: 48px;
+  }
+
+  .air-value {
+    font-size: 22px;
+  }
+
+  .week-item {
+    gap: 8px;
+  }
+
+  .week-left {
+    gap: 8px;
+  }
+
+  .week-right {
+    gap: 6px;
+  }
+
+  .week-temp-max,
+  .week-temp-min {
+    font-size: 13px;
+  }
+
+  .map-wrapper {
+    height: 300px;
+  }
+
+  .btn {
+    padding: 7px 14px;
+    font-size: 12px;
   }
 }
 
