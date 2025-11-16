@@ -9,7 +9,15 @@
 
 ## 🖼️ **Demonstração**
 
-> *(Se quiser, posso gerar um GIF bonito do seu projeto.)*
+### 💻 **Versão Desktop**
+<p align="center">
+  <img src="https://raw.githubusercontent.com/gustavomurai/Aplicativo-Clima/main/GIF1.gif" width="900">
+</p>
+
+### 📱 **Versão Mobile**
+<p align="center">
+  <img src="https://raw.githubusercontent.com/gustavomurai/Aplicativo-Clima/main/GIF2.gif" width="350">
+</p>
 
 ---
 
@@ -107,4 +115,22 @@ Desenvolvido usando **HTML, CSS e JavaScript puro**, com foco em **UI/UX, respon
 | **OpenWeather API** | Dados climáticos |
 | **OpenStreetMap** | Mapa |
 | **LocalStorage** | Persistência local |
+
+---
+
+## 🧑‍💻 **Desenvolvedor**
+
+Criado por **Gustavo Cerqueira Murai**  
+🔗 GitHub: https://github.com/gustavomurai  
+🔗 LinkedIn: https://www.linkedin.com/in/gustavomurai/
+
+---
+
+## ⭐ **Contribuições**
+Sinta-se à vontade para abrir issues, sugerir melhorias e enviar PRs.
+
+---
+
+## 📝 **Licença**
+Este projeto é open-source e pode ser utilizado para estudos, melhorias e adaptações.
 
