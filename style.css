@@ -38,7 +38,6 @@ body {
   color: var(--text-main);
 }
 
-/* Tema claro (se quiser no futuro) */
 body.theme-light {
   background: #f3f4f6;
   color: #111827;
@@ -53,57 +52,54 @@ body.theme-light {
 }
 
 /* =========================================================
-   SIDEBAR (barra de navegação esquerda)
+   SIDEBAR
 ========================================================= */
 .sidebar {
-  width: 90px;
+  width: 100px;
   background: transparent;
   padding: 12px 8px;
   display: flex;
   justify-content: center;
 }
 
-/* Pilar claro arredondado de cima a baixo */
+/* Pilar claro arredondado */
 .sidebar-inner {
   width: 100%;
   background: var(--bg-sidebar-track);
   border-radius: 24px;
-  padding: 14px 0;
+  padding: 16px 0;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-/* Logo ventinho no topo */
 .sidebar-logo {
-  width: 52px;
-  height: 52px;
+  width: 56px;
+  height: 56px;
   border-radius: var(--radius-card);
   background: #111827;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 24px;
+  margin-bottom: 26px;
 }
 
 .logo-icon {
-  width: 26px;
-  height: 26px;
+  width: 28px;
+  height: 28px;
   object-fit: contain;
   opacity: 0.96;
   filter: drop-shadow(0 0 6px #38bdf8aa);
 }
 
-/* Lista de itens de navegação */
 .sidebar-nav {
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  gap: 20px;
   width: 100%;
   align-items: center;
 }
 
-/* Botões – ícone em cima, label embaixo */
 .nav-item {
   display: flex;
   flex-direction: column;
@@ -111,39 +107,35 @@ body.theme-light {
   gap: 6px;
   text-decoration: none;
   cursor: pointer;
+  position: relative;
 }
 
-/* Caixa do ícone (onde entra o hover) */
 .nav-icon-wrapper {
   border-radius: 16px;
-  padding: 8px;
+  padding: 10px;
   background: transparent;
   transition:
     background 0.15s ease,
     transform 0.1s ease;
 }
 
-/* Ícone em si */
 .nav-icon {
-  width: 20px;
-  height: 20px;
+  width: 22px;
+  height: 22px;
   opacity: 0.6;
   display: block;
 }
 
-/* Label */
 .nav-label {
-  font-size: 11px;
+  font-size: 12px;
   color: #6b7280;
 }
 
-/* Hover: só muda a caixinha do ícone (igual ao “app icon”) */
 .nav-item:hover .nav-icon-wrapper {
   background: #111827;
   transform: translateY(-1px);
 }
 
-/* Estado ativo: ícone + texto claros (sem fundo gigante) */
 .nav-item-active .nav-icon {
   opacity: 1;
   filter: brightness(1.6);
@@ -153,18 +145,19 @@ body.theme-light {
   color: #ffffff;
 }
 
+/* SEM barrinha azul lateral aqui */
+
 /* =========================================================
    MAIN
 ========================================================= */
 .main {
   flex: 1;
-  padding: 24px 32px;
+  padding: 28px 40px;
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 26px;
 }
 
-/* Topbar genérica */
 .topbar {
   display: flex;
   justify-content: space-between;
@@ -172,39 +165,40 @@ body.theme-light {
 }
 
 .app-title {
-  font-size: 26px;
+  font-size: 28px;
   font-weight: 600;
   letter-spacing: -0.01em;
 }
 
 .app-subtitle {
-  font-size: 13px;
+  font-size: 14px;
   color: var(--text-muted);
   margin-top: 4px;
 }
 
-/* Topbar da home (apenas a barra de busca) */
+/* Topbar da home */
 .home-topbar {
   justify-content: flex-start;
+  position: relative; /* para ancorar as sugestões */
 }
 
 /* =========================================================
-   BARRA DE BUSCA (HOME)
+   BARRA DE BUSCA
 ========================================================= */
 .search-form {
   width: 100%;
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
   background: var(--bg-card-inner);
   border-radius: var(--radius-card);
-  padding: 10px 18px;
+  padding: 12px 20px;
   border: none;
 }
 
 .search-icon-img {
-  width: 18px;
-  height: 18px;
+  width: 20px;
+  height: 20px;
   opacity: 0.8;
 }
 
@@ -214,11 +208,14 @@ body.theme-light {
   outline: none;
   background: transparent;
   color: inherit;
-  font-size: 14px;
+  font-size: 15px;
 }
 
-/* Sugestões de cidades */
+/* Sugestões de cidades – flutuando logo abaixo da barra */
 .suggestions {
+  position: absolute;
+  left: 0;
+  top: 100%;
   margin-top: 6px;
   background: #020617;
   border-radius: 14px;
@@ -226,11 +223,12 @@ body.theme-light {
   max-width: 420px;
   display: none;
   overflow: hidden;
+  z-index: 20;
 }
 
 .suggestion-item {
-  padding: 8px 10px;
-  font-size: 13px;
+  padding: 9px 11px;
+  font-size: 14px;
   cursor: pointer;
 }
 
@@ -241,16 +239,13 @@ body.theme-light {
 /* =========================================================
    GRIDS
 ========================================================= */
-
-/* Home – esquerda (clima atual + hoje + condição do ar) / direita (7 dias) */
 .grid-home {
   display: grid;
   grid-template-columns: minmax(0, 2.1fr) minmax(0, 1.2fr);
   grid-template-rows: auto auto auto;
-  gap: 16px;
+  gap: 18px;
 }
 
-/* Páginas simples (config, cidades, mapa) */
 .grid-simple {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
@@ -258,27 +253,27 @@ body.theme-light {
 }
 
 /* =========================================================
-   CARDS GENÉRICOS
+   CARDS
 ========================================================= */
 .card {
   background: var(--bg-card);
   border-radius: var(--radius-card);
-  padding: 16px 18px;
+  padding: 20px 22px;
   border: none;
   box-shadow: none;
 }
 
 .card-header {
-  margin-bottom: 12px;
+  margin-bottom: 14px;
 }
 
 .card-header h2 {
-  font-size: 15px;
+  font-size: 18px;
   font-weight: 500;
 }
 
 /* =========================================================
-   CLIMA ATUAL (Home, topo esquerdo – SEM BOX)
+   CLIMA ATUAL
 ========================================================= */
 .card-current {
   grid-column: 1 / 2;
@@ -292,23 +287,23 @@ body.theme-light {
 }
 
 .city-name {
-  font-size: 24px;
+  font-size: 28px;
   font-weight: 600;
   letter-spacing: -0.01em;
 }
 
 .current-sub {
-  font-size: 13px;
+  font-size: 14px;
   color: var(--text-soft);
-  margin-top: 2px;
+  margin-top: 3px;
 }
 
 .current-temp-row {
-  margin-top: 12px;
+  margin-top: 14px;
 }
 
 .current-temp {
-  font-size: 54px;
+  font-size: 68px;
   font-weight: 700;
 }
 
@@ -318,14 +313,26 @@ body.theme-light {
   justify-content: center;
 }
 
+/* Ícone do clima com glow e animação suave */
 .current-big-icon {
-  width: 110px;
-  height: 110px;
+  width: 120px;
+  height: 120px;
   object-fit: contain;
+  filter: drop-shadow(0 0 18px rgba(56, 189, 248, 0.7));
+  animation: weather-float 4s ease-in-out infinite;
+}
+
+@keyframes weather-float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
 }
 
 /* =========================================================
-   PREVISÃO DE HOJE
+   PRÓXIMAS HORAS
 ========================================================= */
 .card-today {
   grid-column: 1 / 2;
@@ -334,35 +341,37 @@ body.theme-light {
 
 .hourly-list {
   display: flex;
-  gap: 12px;
+  gap: 14px;
   overflow-x: auto;
-  padding-top: 4px;
+  padding-top: 6px;
+  justify-content: space-between;
 }
 
 .hour-item {
-  min-width: 80px;
-  padding: 8px 8px 10px;
+  min-width: 95px;
+  padding: 10px 10px 12px;
   border-radius: 14px;
   background: var(--bg-card-inner);
   border: none;
   text-align: center;
-  font-size: 11px;
+  font-size: 12px;
   flex-shrink: 0;
 }
 
 .hour-item-time {
   color: var(--text-soft);
-  margin-bottom: 4px;
+  margin-bottom: 5px;
+  font-size: 12px;
 }
 
 .hour-item-icon {
-  width: 28px;
-  height: 28px;
+  width: 32px;
+  height: 32px;
 }
 
 .hour-item-temp {
-  margin-top: 4px;
-  font-size: 13px;
+  margin-top: 5px;
+  font-size: 14px;
   font-weight: 500;
 }
 
@@ -377,73 +386,77 @@ body.theme-light {
 .air-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 20px;
-  margin-top: 6px;
+  gap: 22px;
+  margin-top: 8px;
 }
 
 .air-item {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 7px;
 }
 
 .air-title {
   display: flex;
   align-items: center;
   gap: 8px;
-  font-size: 13px;
+  font-size: 14px;
   color: #cbd5f5;
 }
 
-/* ícones maiores */
 .air-icon {
-  width: 22px;
-  height: 22px;
+  width: 24px;
+  height: 24px;
 }
 
 .air-value {
-  font-size: 24px;
+  font-size: 26px;
   font-weight: 600;
 }
 
 /* =========================================================
-   PREVISÃO 7 DIAS
+   PREVISÃO 5 DIAS
 ========================================================= */
 .card-week {
   grid-column: 2 / 3;
   grid-row: 1 / 4;
+  display: flex;
+  flex-direction: column;
 }
 
 .week-list {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 12px;
+  flex: 1;
+  justify-content: space-between;
 }
 
 .week-item {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 10px 12px;
+  padding: 12px 14px;
   border-radius: 14px;
   background: var(--bg-card-inner);
   border: none;
-  font-size: 13px;
+  font-size: 14px;
 }
 
 .week-left {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
 }
 
 .week-day {
-  min-width: 72px;
+  min-width: 80px;
+  font-weight: 500;
 }
 
 .week-icon {
-  width: 24px;
-  height: 24px;
+  width: 26px;
+  height: 26px;
 }
 
 .week-desc {
@@ -452,15 +465,25 @@ body.theme-light {
 
 .week-right {
   display: flex;
-  gap: 8px;
+  gap: 10px;
 }
 
+/* Máxima laranja, mínima azul claro */
 .week-temp-max {
   font-weight: 600;
+  color: #f97316;
+  font-size: 15px;
 }
 
 .week-temp-min {
-  color: var(--text-soft);
+  color: #93c5fd;
+  font-size: 14px;
+}
+
+/* Destaque do dia de hoje (primeiro item) – sem barrinha azul lateral */
+.week-list .week-item:first-child {
+  background: #111827;
+  box-shadow: 0 0 0 1px rgba(59, 130, 246, 0.55);
 }
 
 /* =========================================================
@@ -469,24 +492,24 @@ body.theme-light {
 .cities-list {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 10px;
 }
 
 .city-row {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 8px 10px;
+  padding: 10px 12px;
   border-radius: var(--radius-card);
   background: var(--bg-card);
   border: none;
-  font-size: 13px;
+  font-size: 14px;
 }
 
 .city-row-main {
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 3px;
 }
 
 .city-row-name {
@@ -494,7 +517,7 @@ body.theme-light {
 }
 
 .city-row-sub {
-  font-size: 11px;
+  font-size: 12px;
   color: var(--text-soft);
 }
 
@@ -511,8 +534,8 @@ body.theme-light {
   border: none;
   background: transparent;
   color: inherit;
-  font-size: 12px;
-  padding: 7px 16px;
+  font-size: 13px;
+  padding: 8px 18px;
   cursor: pointer;
   transition:
     background 0.15s ease,
@@ -537,21 +560,21 @@ body.theme-light {
    CONFIGURAÇÕES
 ========================================================= */
 .settings-card {
-  padding-top: 18px;
-  padding-bottom: 18px;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
 .settings-row {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 8px;
 }
 
 .settings-option {
   display: flex;
   align-items: center;
   gap: 8px;
-  font-size: 13px;
+  font-size: 14px;
 }
 
 .settings-option input {
@@ -560,18 +583,18 @@ body.theme-light {
 
 .settings-row-large {
   flex-direction: row;
-  gap: 32px;
-  margin-top: 10px;
+  gap: 34px;
+  margin-top: 12px;
 }
 
 .settings-option-large span {
-  font-size: 24px;
+  font-size: 26px;
 }
 
 .settings-save-btn {
   align-self: flex-end;
-  margin-top: 16px;
-  padding: 10px 24px;
+  margin-top: 18px;
+  padding: 11px 26px;
   border-radius: var(--radius-card);
 }
 
@@ -580,7 +603,7 @@ body.theme-light {
 ========================================================= */
 .map-wrapper {
   width: 100%;
-  height: 420px;
+  height: 440px;
   border-radius: var(--radius-card);
   overflow: hidden;
   background: var(--bg-card-inner);
@@ -597,7 +620,7 @@ body.theme-light {
 ========================================================= */
 .helper-text {
   margin-top: 10px;
-  font-size: 12px;
+  font-size: 13px;
   color: var(--text-soft);
 }
 
@@ -632,15 +655,13 @@ body.theme-light {
   }
 }
 
-/* ========================= */
-/* FOOTER                    */
-/* ========================= */
+/* FOOTER */
 .footer {
   width: 100%;
   text-align: center;
   margin-top: 40px;
   padding: 18px 0;
-  font-size: 14px;
+  font-size: 15px;
   color: #c7c9d1;
   opacity: 0.7;
 }

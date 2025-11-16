@@ -2,44 +2,45 @@
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8">
-  <title>Painel do Clima</title>
+  <title>Clima</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body data-page="dashboard" class="theme-dark">
+
   <div class="app">
 
     <!-- SIDEBAR -->
     <aside class="sidebar">
       <div class="sidebar-inner">
         <div class="sidebar-logo">
-          <img src="images/logo-wind.svg" alt="Logo" class="logo-icon">
+          <img src="images/logo-wind.svg" class="logo-icon" alt="">
         </div>
 
         <nav class="sidebar-nav">
-          <a href="index.html" class="nav-item nav-item-active" title="Clima">
+          <a href="index.html" class="nav-item nav-item-active">
             <span class="nav-icon-wrapper">
-              <img src="images/nav-weather.svg" alt="" class="nav-icon">
+              <img src="images/nav-weather.svg" class="nav-icon">
             </span>
             <span class="nav-label">Clima</span>
           </a>
 
-          <a href="cities.html" class="nav-item" title="Cidades">
+          <a href="cities.html" class="nav-item">
             <span class="nav-icon-wrapper">
-              <img src="images/nav-cities.svg" alt="" class="nav-icon">
+              <img src="images/nav-cities.svg" class="nav-icon">
             </span>
             <span class="nav-label">Cidades</span>
           </a>
 
-          <a href="map.html" class="nav-item" title="Mapa">
+          <a href="map.html" class="nav-item">
             <span class="nav-icon-wrapper">
-              <img src="images/nav-map.svg" alt="" class="nav-icon">
+              <img src="images/nav-map.svg" class="nav-icon">
             </span>
             <span class="nav-label">Mapa</span>
           </a>
 
-          <a href="settings.html" class="nav-item" title="Configurações">
+          <a href="settings.html" class="nav-item">
             <span class="nav-icon-wrapper">
-              <img src="images/nav-settings.svg" alt="" class="nav-icon">
+              <img src="images/nav-settings.svg" class="nav-icon">
             </span>
             <span class="nav-label">Config</span>
           </a>
@@ -47,42 +48,43 @@
       </div>
     </aside>
 
-    <!-- CONTEÚDO PRINCIPAL -->
+    <!-- MAIN -->
     <main class="main">
 
-      <!-- BARRA DE BUSCA -->
+      <!-- BARRA DE BUSCA + SUGESTÕES -->
       <header class="topbar home-topbar">
         <form id="search-form" class="search-form">
-          <span class="search-icon">
-            <img src="images/icon-search.svg" class="search-icon-img" alt="">
-          </span>
-          <input type="text" id="search-input" placeholder="Buscar por cidade" autocomplete="off">
+          <img src="images/icon-search.svg" class="search-icon-img">
+          <input id="search-input" placeholder="Buscar por cidade" autocomplete="off">
         </form>
+
+        <!-- AQUI DENTRO DO HEADER: volta pro lugar certo -->
         <div id="suggestions" class="suggestions"></div>
       </header>
 
-      <!-- GRID -->
+      <!-- GRID HOME -->
       <section class="grid-home">
 
         <!-- CLIMA ATUAL -->
-        <section class="card card-current">
-          <div class="current-left">
-            <p id="city-name" class="city-name">Carregando...</p>
-            <p id="current-date" class="current-sub">Chance de chuva 0%</p>
+        <section class="card-current">
+          <div>
+            <div id="city-name" class="city-name">--</div>
+            <div id="current-date" class="current-sub">--</div>
             <div class="current-temp-row">
-              <span id="current-temp" class="current-temp">--°</span>
+              <span id="current-temp" class="current-temp">--°C</span>
             </div>
+            <div id="current-condition" class="current-sub">--</div>
           </div>
 
           <div class="current-right">
-            <img id="current-icon" class="current-big-icon" alt="Clima">
+            <img id="current-icon" class="current-big-icon" alt="">
           </div>
         </section>
 
-        <!-- PREVISÃO DE HOJE -->
+        <!-- PREVISÃO DAS PRÓXIMAS HORAS -->
         <section class="card card-today">
           <div class="card-header">
-            <h2>Previsão de hoje</h2>
+            <h2>Previsão das próximas horas</h2>
           </div>
           <div id="hourly-list" class="hourly-list"></div>
         </section>
@@ -94,56 +96,59 @@
           </div>
 
           <div class="air-grid">
+
             <div class="air-item">
               <div class="air-title">
                 <img src="images/air-temp.svg" class="air-icon" alt="">
-                <span>Sensação térmica</span>
+                Sensação térmica
               </div>
-              <p id="air-real-feel" class="air-value">--°</p>
+              <div id="air-real-feel" class="air-value">--°C</div>
             </div>
 
             <div class="air-item">
               <div class="air-title">
                 <img src="images/air-rain.svg" class="air-icon" alt="">
-                <span>Chance de chuva</span>
+                Chance de chuva
               </div>
-              <p id="air-rain" class="air-value">--%</p>
+              <div id="air-rain" class="air-value">--%</div>
             </div>
 
             <div class="air-item">
               <div class="air-title">
                 <img src="images/air-wind.svg" class="air-icon" alt="">
-                <span>Vento</span>
+                Vento
               </div>
-              <p id="air-wind" class="air-value">-- km/h</p>
+              <div id="air-wind" class="air-value">-- km/h</div>
             </div>
 
             <div class="air-item">
               <div class="air-title">
                 <img src="images/air-uv.svg" class="air-icon" alt="">
-                <span>Índice UV</span>
+                Índice UV
               </div>
-              <p id="air-humidity" class="air-value">--</p>
+              <div id="air-humidity" class="air-value">--%</div>
             </div>
+
           </div>
         </section>
 
-        <!-- 7 DIAS -->
+        <!-- PREVISÃO SEMANAL -->
         <section class="card card-week">
           <div class="card-header">
-            <h2>Previsão para 7 dias</h2>
+            <h2>Previsão para 5 dias</h2>
           </div>
+
           <div id="week-list" class="week-list"></div>
         </section>
+
       </section>
 
       <!-- FOOTER -->
       <footer class="footer">
-  Projeto desenvolvido por <strong>Gustavo Cerqueira Murai</strong> —
-  <a href="https://github.com/gustavomurai" target="_blank" class="footer-link">Github</a> |
-  <a href="https://www.linkedin.com/in/gustavomurai/" target="_blank" class="footer-link">LinkedIn</a>
-</footer>
-
+        Projeto desenvolvido por <strong>Gustavo Cerqueira Murai</strong> —
+        <a href="https://github.com/gustavomurai" target="_blank" class="footer-link">Github</a> |
+        <a href="https://www.linkedin.com/in/gustavomurai/" target="_blank" class="footer-link">LinkedIn</a>
+      </footer>
 
     </main>
   </div>

@@ -141,25 +141,29 @@ function removeFavorite(name, country) {
 // RENDER DASHBOARD
 // ======================================================
 function renderCurrent(city, now, tz) {
-  if (!document.getElementById("city-name")) return;
+  // city-name SEMPRE existe na home; se não tiver, nem é a página certa
+  const nameEl = document.getElementById("city-name");
+  if (!nameEl) return;
 
-  document.getElementById("city-name").textContent = `${city.name}, ${city.country}`;
-  document.getElementById("current-temp").textContent = `${Math.round(now.main.temp)}${unitSymbol()}`;
-  document.getElementById("current-condition").textContent = now.weather?.[0]?.description ?? "";
-  document.getElementById("current-feels").textContent = `Sensação: ${Math.round(now.main.feels_like)}${unitSymbol()}`;
-  document.getElementById("current-humidity").textContent = `Umidade: ${now.main.humidity}%`;
+  nameEl.textContent = `${city.name}, ${city.country}`;
 
-  const wind = msToKmh(now.wind.speed);
-  document.getElementById("current-wind").textContent = `Vento: ${wind} km/h`;
-
-  document.getElementById("current-max").textContent = `Máx: ${Math.round(now.main.temp_max)}${unitSymbol()}`;
-  document.getElementById("current-min").textContent = `Mín: ${Math.round(now.main.temp_min)}${unitSymbol()}`;
-
-  if (now.weather && now.weather[0]) {
-    document.getElementById("current-icon").src = iconUrl(now.weather[0].icon);
+  const tempEl = document.getElementById("current-temp");
+  if (tempEl) {
+    tempEl.textContent = `${Math.round(now.main.temp)}${unitSymbol()}`;
   }
 
-  document.getElementById("current-date").textContent = formatDay(now.dt, tz);
+  const dateEl = document.getElementById("current-date");
+  if (dateEl) {
+    dateEl.textContent = formatDay(now.dt, tz);
+  }
+
+  const iconEl = document.getElementById("current-icon");
+  if (iconEl && now.weather && now.weather[0]) {
+    iconEl.src = iconUrl(now.weather[0].icon);
+  }
+
+  // Se no futuro você quiser adicionar mais infos (sensação, mínima, máxima, etc.),
+  // é só criar os elementos no HTML e ligar aqui com a mesma lógica de "se existir, preenche".
 }
 
 function renderHourly(forecast, tz) {
@@ -167,7 +171,9 @@ function renderHourly(forecast, tz) {
   if (!box) return;
 
   box.innerHTML = "";
-  forecast.list.slice(0, 6).forEach(f => {
+
+  // próximas 8 previsões (24h em passos de 3h)
+  forecast.list.slice(0, 8).forEach(f => {
     const div = document.createElement("div");
     div.className = "hour-item";
     div.innerHTML = `
@@ -216,7 +222,9 @@ function renderWeek(forecast, tz) {
 
     div.innerHTML = `
       <div class="week-left">
-        <div class="week-day">${i === 0 ? "Hoje" : d.date.toLocaleDateString("pt-BR", { weekday: "short" })}</div>
+        <div class="week-day">
+          ${i === 0 ? "Hoje" : d.date.toLocaleDateString("pt-BR", { weekday: "short" })}
+        </div>
         <img src="${iconUrl(d.icon)}" class="week-icon">
         <div class="week-desc">${d.desc}</div>
       </div>
@@ -236,11 +244,14 @@ function renderAir(now, forecast) {
   if (!feels) return;
 
   feels.textContent = `${Math.round(now.main.feels_like)}${unitSymbol()}`;
-  document.getElementById("air-humidity").textContent = `${now.main.humidity}%`;
-  document.getElementById("air-wind").textContent = `${msToKmh(now.wind.speed)} km/h`;
+  document.getElementById("air-humidity").textContent =
+    `${now.main.humidity}%`;
+  document.getElementById("air-wind").textContent =
+    `${msToKmh(now.wind.speed)} km/h`;
 
   const rain = forecast.list[0].pop ?? 0;
-  document.getElementById("air-rain").textContent = `${Math.round(rain * 100)}%`;
+  document.getElementById("air-rain").textContent =
+    `${Math.round(rain * 100)}%`;
 }
 
 // ======================================================
@@ -273,7 +284,8 @@ function setupSearch() {
       cities.forEach(c => {
         const div = document.createElement("div");
         div.className = "suggestion-item";
-        div.textContent = `${c.name}, ${c.state ? c.state + ", " : ""}${c.country}`;
+        div.textContent =
+          `${c.name}, ${c.state ? c.state + ", " : ""}${c.country}`;
         div.onclick = () => {
           input.value = c.name;
           list.style.display = "none";
@@ -379,7 +391,8 @@ function renderMap() {
   }
 
   const { lat, lon } = city;
-  frame.src = `https://www.openstreetmap.org/export/embed.html?bbox=${lon - 0.2},${lat - 0.2},${lon + 0.2},${lat + 0.2}&layer=mapnik&marker=${lat},${lon}`;
+  frame.src =
+    `https://www.openstreetmap.org/export/embed.html?bbox=${lon - 0.2},${lat - 0.2},${lon + 0.2},${lat + 0.2}&layer=mapnik&marker=${lat},${lon}`;
 }
 
 // ======================================================
@@ -389,14 +402,12 @@ function initSettings() {
   const unit = getUnit();
   const theme = load(STORAGE.THEME, "dark");
 
-  // selecionar opções
   document.getElementById("unit-metric").checked = unit === "metric";
   document.getElementById("unit-imperial").checked = unit === "imperial";
 
   document.getElementById("theme-dark").checked = theme === "dark";
   document.getElementById("theme-light").checked = theme === "light";
 
-  // botão salvar
   const saveBtn = document.getElementById("settings-save");
   saveBtn.onclick = () => {
     const unitValue = document.querySelector('input[name="unit"]:checked').value;
