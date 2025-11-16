@@ -108,16 +108,3 @@ Desenvolvido usando **HTML, CSS e JavaScript puro**, com foco em **UI/UX, respon
 | **OpenStreetMap** | Mapa |
 | **LocalStorage** | Persistência local |
 
----
-
-## 📦 **Como Rodar o Projeto Localmente**
-
-```bash
-# Clone o repositório
-git clone https://github.com/gustavomurai/Aplicativo-Clima
-
-# Acesse a pasta
-cd Aplicativo-Clima
-
-# Abra o projeto no navegador
-open index.html
