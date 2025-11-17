@@ -28,11 +28,7 @@ Utiliza **HTML, CSS e JavaScript Vanilla**, consumindo dados da **OpenWeather AP
   <img src="https://raw.githubusercontent.com/gustavomurai/Aplicativo-Clima/main/GIF2.gif" width="350">
 </p>
 
----
 
-
-
----
 
 ## 🚀 **Funcionalidades**
 
