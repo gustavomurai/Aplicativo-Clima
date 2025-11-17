@@ -3,22 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <title>Aplicativo Clima</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <link rel="stylesheet" href="style.css">
   <link rel="icon" type="image/svg+xml" href="images/logo-wind.svg">
 </head>
+
 <body data-page="dashboard" class="theme-dark">
-
-  <!-- Botão mobile para abrir a barra lateral (aparece só no mobile via CSS) -->
-  <button
-    id="mobile-menu-toggle"
-    class="mobile-menu-toggle"
-    type="button"
-    aria-label="Abrir navegação">
-    ‹
-  </button>
-
-  <!-- Overlay para quando o menu estiver aberto no mobile -->
+  <button id="mobile-menu-toggle" class="mobile-menu-toggle" type="button" aria-label="Abrir navegação">‹</button>
   <div id="mobile-menu-overlay" class="mobile-menu-overlay"></div>
 
   <div class="app">
@@ -30,30 +22,22 @@
 
         <nav class="sidebar-nav">
           <a href="index.html" class="nav-item nav-item-active">
-            <span class="nav-icon-wrapper">
-              <img src="images/nav-weather.svg" class="nav-icon" alt="">
-            </span>
+            <span class="nav-icon-wrapper"><img src="images/nav-weather.svg" class="nav-icon" alt=""></span>
             <span class="nav-label">Clima</span>
           </a>
 
           <a href="cities.html" class="nav-item">
-            <span class="nav-icon-wrapper">
-              <img src="images/nav-cities.svg" class="nav-icon" alt="">
-            </span>
+            <span class="nav-icon-wrapper"><img src="images/nav-cities.svg" class="nav-icon" alt=""></span>
             <span class="nav-label">Cidades</span>
           </a>
 
           <a href="map.html" class="nav-item">
-            <span class="nav-icon-wrapper">
-              <img src="images/nav-map.svg" class="nav-icon" alt="">
-            </span>
+            <span class="nav-icon-wrapper"><img src="images/nav-map.svg" class="nav-icon" alt=""></span>
             <span class="nav-label">Mapa</span>
           </a>
 
           <a href="settings.html" class="nav-item">
-            <span class="nav-icon-wrapper">
-              <img src="images/nav-settings.svg" class="nav-icon" alt="">
-            </span>
+            <span class="nav-icon-wrapper"><img src="images/nav-settings.svg" class="nav-icon" alt=""></span>
             <span class="nav-label">Config</span>
           </a>
         </nav>
@@ -65,7 +49,14 @@
         <form id="search-form" class="search-form">
           <img src="images/icon-search.svg" class="search-icon-img" alt="">
           <input id="search-input" placeholder="Buscar por cidade" autocomplete="off">
+
+          <button type="button" id="locate-btn" class="locate-btn" aria-label="Usar minha localização">
+            <svg viewBox="0 0 24 24" class="locate-icon" aria-hidden="true">
+              <path d="M12 2.5a1 1 0 0 1 1 1v1.26a6.25 6.25 0 0 1 6.24 6.24h1.26a1 1 0 1 1 0 2h-1.26a6.25 6.25 0 0 1-6.24 6.24v1.26a1 1 0 1 1-2 0v-1.26A6.25 6.25 0 0 1 4.76 13H3.5a1 1 0 1 1 0-2h1.26A6.25 6.25 0 0 1 11 4.76V3.5a1 1 0 0 1 1-1zm0 5.5a4 4 0 1 0 0 8 4 4 0 0 0 0-8z"/>
+            </svg>
+          </button>
         </form>
+
         <div id="suggestions" class="suggestions"></div>
       </header>
 
@@ -86,16 +77,12 @@
         </section>
 
         <section class="card card-today">
-          <div class="card-header">
-            <h2>Previsão das próximas horas</h2>
-          </div>
+          <div class="card-header"><h2>Previsão das próximas horas</h2></div>
           <div id="hourly-list" class="hourly-list"></div>
         </section>
 
         <section class="card card-air">
-          <div class="card-header">
-            <h2>Condição do ar</h2>
-          </div>
+          <div class="card-header"><h2>Condição do ar</h2></div>
 
           <div class="air-grid">
             <div class="air-item">
@@ -133,17 +120,15 @@
         </section>
 
         <section class="card card-week">
-          <div class="card-header">
-            <h2>Previsão para 5 dias</h2>
-          </div>
+          <div class="card-header"><h2>Previsão para 5 dias</h2></div>
           <div id="week-list" class="week-list"></div>
         </section>
       </section>
 
       <footer class="footer">
         Projeto desenvolvido por <strong>Gustavo Cerqueira Murai</strong> —
-        <a href="https://github.com/gustavomurai" target="_blank" class="footer-link">Github</a> |
-        <a href="https://www.linkedin.com/in/gustavomurai/" target="_blank" class="footer-link">LinkedIn</a>
+        <a href="https://github.com/gustavomurai" class="footer-link" target="_blank">Github</a> |
+        <a href="https://www.linkedin.com/in/gustavomurai/" class="footer-link" target="_blank">LinkedIn</a>
       </footer>
     </main>
   </div>

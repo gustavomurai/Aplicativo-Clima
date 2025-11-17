@@ -3,27 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <title>Mapa</title>
-
-  <!-- Essencial para funcionar no mobile -->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <link rel="stylesheet" href="style.css">
   <link rel="icon" type="image/svg+xml" href="images/logo-wind.svg">
 </head>
+
 <body data-page="map" class="theme-dark">
-  <!-- Botão mobile para abrir a barra lateral (aparece só no mobile via CSS) -->
-  <button
-    id="mobile-menu-toggle"
-    class="mobile-menu-toggle"
-    type="button"
-    aria-label="Abrir navegação">
-    ‹
-  </button>
-
-  <!-- Overlay para quando o menu estiver aberto no mobile -->
+  <button id="mobile-menu-toggle" class="mobile-menu-toggle" type="button" aria-label="Abrir navegação">‹</button>
   <div id="mobile-menu-overlay" class="mobile-menu-overlay"></div>
-  <div class="app">
 
+  <div class="app">
     <aside class="sidebar">
       <div class="sidebar-inner">
         <div class="sidebar-logo">
@@ -62,7 +52,9 @@
 
       <section class="grid-simple">
         <section class="card">
-          <div class="card-header"><h2 id="map-city-title">Cidade atual</h2></div>
+          <div class="card-header">
+            <h2 id="map-city-title">Cidade atual</h2>
+          </div>
 
           <div class="map-wrapper">
             <iframe id="map-frame" loading="lazy"></iframe>

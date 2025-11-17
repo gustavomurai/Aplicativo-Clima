@@ -3,27 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <title>Configurações</title>
-
-  <!-- Essencial para o layout responsivo funcionar no celular -->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <link rel="stylesheet" href="style.css">
   <link rel="icon" type="image/svg+xml" href="images/logo-wind.svg">
 </head>
+
 <body data-page="settings" class="theme-dark">
-  <!-- Botão mobile para abrir a barra lateral (aparece só no mobile via CSS) -->
-  <button
-    id="mobile-menu-toggle"
-    class="mobile-menu-toggle"
-    type="button"
-    aria-label="Abrir navegação">
-    ‹
-  </button>
-
-  <!-- Overlay para quando o menu estiver aberto no mobile -->
+  <button id="mobile-menu-toggle" class="mobile-menu-toggle" type="button" aria-label="Abrir navegação">‹</button>
   <div id="mobile-menu-overlay" class="mobile-menu-overlay"></div>
-  <div class="app">
 
+  <div class="app">
     <aside class="sidebar">
       <div class="sidebar-inner">
         <div class="sidebar-logo">
@@ -32,30 +22,22 @@
 
         <nav class="sidebar-nav">
           <a href="index.html" class="nav-item">
-            <span class="nav-icon-wrapper">
-              <img src="images/nav-weather.svg" class="nav-icon" alt="">
-            </span>
+            <span class="nav-icon-wrapper"><img src="images/nav-weather.svg" class="nav-icon" alt=""></span>
             <span class="nav-label">Clima</span>
           </a>
 
           <a href="cities.html" class="nav-item">
-            <span class="nav-icon-wrapper">
-              <img src="images/nav-cities.svg" class="nav-icon" alt="">
-            </span>
+            <span class="nav-icon-wrapper"><img src="images/nav-cities.svg" class="nav-icon" alt=""></span>
             <span class="nav-label">Cidades</span>
           </a>
 
           <a href="map.html" class="nav-item">
-            <span class="nav-icon-wrapper">
-              <img src="images/nav-map.svg" class="nav-icon" alt="">
-            </span>
+            <span class="nav-icon-wrapper"><img src="images/nav-map.svg" class="nav-icon" alt=""></span>
             <span class="nav-label">Mapa</span>
           </a>
 
           <a href="settings.html" class="nav-item nav-item-active">
-            <span class="nav-icon-wrapper">
-              <img src="images/nav-settings.svg" class="nav-icon" alt="">
-            </span>
+            <span class="nav-icon-wrapper"><img src="images/nav-settings.svg" class="nav-icon" alt=""></span>
             <span class="nav-label">Config</span>
           </a>
         </nav>
@@ -63,14 +45,12 @@
     </aside>
 
     <main class="main">
-
       <header class="topbar">
         <h1 class="app-title">Configurações</h1>
         <p class="app-subtitle">Personalize o painel</p>
       </header>
 
       <section class="grid-simple">
-
         <section class="card settings-card">
           <div class="card-header">
             <h2>Unidade de temperatura</h2>
@@ -106,19 +86,15 @@
             </label>
           </div>
         </section>
-
       </section>
 
-      <button id="settings-save" class="btn btn-primary settings-save-btn">
-        Salvar Configuração
-      </button>
+      <button id="settings-save" class="btn btn-primary settings-save-btn">Salvar Configuração</button>
 
       <footer class="footer">
         Projeto desenvolvido por <strong>Gustavo Cerqueira Murai</strong> —
         <a href="https://github.com/gustavomurai" target="_blank" class="footer-link">Github</a> |
         <a href="https://www.linkedin.com/in/gustavomurai/" target="_blank" class="footer-link">LinkedIn</a>
       </footer>
-
     </main>
   </div>
 

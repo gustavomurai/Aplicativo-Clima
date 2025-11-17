@@ -15,7 +15,6 @@ html {
   -webkit-text-size-adjust: 100%;
 }
 
-
 :root {
   --bg-main: #050814;
   --bg-sidebar: #050814;
@@ -38,8 +37,8 @@ body {
 }
 
 body.theme-light {
-  background: #f3f4f6;
-  color: #111827;
+  background: #e5e7eb;
+  color: var(--text-main);
 }
 
 .app {
@@ -123,6 +122,24 @@ body.theme-light {
   color: #6b7280;
 }
 
+body.theme-light .sidebar-inner {
+  background: #0f172a;
+}
+
+body.theme-light .mobile-menu-toggle {
+  background: #8f6d55;
+  color: #f9fafb;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.25);
+}
+
+body.theme-light .sidebar-logo {
+  background: #020617;
+}
+
+body.theme-light .nav-label {
+  color: #e5e7eb;
+}
+
 .nav-item:hover .nav-icon-wrapper {
   background: #111827;
   transform: translateY(-1px);
@@ -194,6 +211,42 @@ body.theme-light {
   font-size: 16px;
 }
 
+.locate-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: none;
+  padding: 0;
+  background: var(--accent);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.locate-icon {
+  width: 18px;
+  height: 18px;
+  fill: #e5edf7;
+}
+
+.locate-btn:hover {
+  background: var(--accent-soft);
+}
+
+body.theme-light .locate-btn {
+  background: #8f6d55;
+}
+
+body.theme-light .locate-icon {
+  fill: #f9fafb;
+}
+
+body.theme-light .locate-btn:hover {
+  background: #b58b5c;
+}
+
 .suggestions {
   position: absolute;
   left: 0;
@@ -234,7 +287,7 @@ body.theme-light {
 .card {
   background: var(--bg-card);
   border-radius: var(--radius-card);
-  padding: 20px 22px;
+  padding: 12px 12px;
   border: none;
   box-shadow: none;
 }
@@ -371,13 +424,17 @@ body.theme-light {
   color: #cbd5f5;
 }
 
+body.theme-light .air-title {
+  color: #4b5563;
+}
+
 .air-icon {
   width: 24px;
   height: 24px;
 }
 
 .air-value {
-  font-size: 26px;
+  font-size: 22px;
   font-weight: 600;
 }
 
@@ -571,7 +628,6 @@ body.theme-light {
   color: var(--text-soft);
 }
 
-/* BOTÃO MOBILE & OVERLAY (estado base: escondidos) */
 .mobile-menu-toggle {
   display: none;
 }
@@ -580,9 +636,6 @@ body.theme-light {
   display: none;
 }
 
-/* =========================================
-   RESPONSIVO - TABLET / TELAS MÉDIAS
-========================================= */
 @media (max-width: 1024px) {
   .grid-home {
     grid-template-columns: minmax(0, 1fr);
@@ -602,15 +655,11 @@ body.theme-light {
   }
 }
 
-/* =========================================
-   RESPONSIVO - MOBILE
-========================================= */
 @media (max-width: 768px) {
   .app {
     flex-direction: column;
   }
 
-  /* Sidebar vira menu deslizante, mas mantém o visual */
   .sidebar {
     position: fixed;
     left: 0;
@@ -626,7 +675,6 @@ body.theme-light {
     transform: translateX(0);
   }
 
-  /* Overlay escuro quando o menu está aberto */
   .mobile-menu-overlay {
     position: fixed;
     inset: 0;
@@ -639,7 +687,6 @@ body.theme-light {
     display: block;
   }
 
-  /* Botão bolinha com setinha no meio da esquerda */
   .mobile-menu-toggle {
     display: flex;
     position: fixed;
@@ -659,24 +706,23 @@ body.theme-light {
     cursor: pointer;
     box-shadow: 0 0 6px rgba(0, 0, 0, 0.5);
   }
-  
+
   .mobile-menu-toggle {
-      left: 10px;
-      transition: left 0.22s ease-out;
+    left: 10px;
+    transition: left 0.22s ease-out;
   }
-  
+
   body.menu-open .mobile-menu-toggle {
-  left: 110px;
+    left: 110px;
   }
 
   .main {
-    padding: 16px 14px 24px;
+    padding: 12px 10px 20px;
     gap: 18px;
     max-width: 480px;
     margin: 0 auto;
   }
 
-  /* grid da home vira coluna, estilo app mobile */
   .grid-home {
     display: flex;
     flex-direction: column;
@@ -702,7 +748,7 @@ body.theme-light {
   }
 
   .city-name {
-    font-size: 24px;
+    font-size: 20px;
   }
 
   .current-temp {
@@ -723,7 +769,6 @@ body.theme-light {
     padding: 8px 8px 10px;
   }
 
-  /* Condição do ar em 2x2 no mobile */
   .air-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -770,9 +815,6 @@ body.theme-light {
   }
 }
 
-/* =========================================
-   RESPONSIVO - MOBILE PEQUENO
-========================================= */
 @media (max-width: 480px) {
   .app-title {
     font-size: 22px;
@@ -787,7 +829,7 @@ body.theme-light {
   }
 
   .current-temp {
-    font-size: 48px;
+    font-size: 46px;
   }
 
   .air-value {
@@ -836,6 +878,15 @@ body.theme-light {
   font-weight: 600;
 }
 
+body.theme-light .footer {
+  color: #4b5563;
+  opacity: 1;
+}
+
+body.theme-light .footer strong {
+  color: #111827;
+}
+
 .footer-link {
   color: #8ab8ff;
   text-decoration: none;
@@ -844,4 +895,107 @@ body.theme-light {
 
 .footer-link:hover {
   text-decoration: underline;
+}
+
+body.theme-light .sidebar-inner {
+  background: #c1bab8;
+}
+
+body.theme-light .sidebar-logo {
+  background: #8f6d55;
+}
+
+body.theme-light .nav-label {
+  color: #544941;
+}
+
+body.theme-light .nav-item-active .nav-label {
+  color: #8f6639;
+  font-weight: 600;
+}
+
+body.theme-light .nav-icon {
+  opacity: 0.9;
+}
+
+body.theme-light .main {
+  background: transparent;
+}
+
+body.theme-light .search-form {
+  background: #c1bab8;
+  border-radius: 999px;
+}
+
+body.theme-light .card {
+  background: #c1bab8;
+}
+
+body.theme-light .hour-item,
+body.theme-light .week-item,
+body.theme-light .city-row {
+  background: #877f7a;
+}
+
+body.theme-light .week-day {
+  color: #2b2826;
+}
+
+body.theme-light .week-desc {
+  color: #3d3128;
+}
+
+body.theme-light .week-temp-min {
+  color: #055596;
+}
+
+body.theme-light .map-wrapper {
+  background: #877f7a;
+}
+
+body.theme-light .footer {
+  color: #987f6d;
+  opacity: 1;
+}
+
+body.theme-light .footer strong {
+  color: #8d6443;
+}
+
+body.theme-light .week-list .week-item:first-child {
+  background: #634c34;
+  box-shadow: none;
+}
+
+body.theme-light .week-list .week-item:first-child .week-day,
+body.theme-light .week-list .week-item:first-child .week-desc,
+body.theme-light .week-list .week-item:first-child .week-temp-max,
+body.theme-light .week-list .week-item:first-child .week-temp-min {
+  color: #ddcab2;
+}
+
+body.theme-light .nav-item:hover .nav-icon-wrapper {
+  background: #8f6d55;
+}
+
+body.theme-light {
+  --text-main: #4a3f38;
+  --text-soft: #6b5c55;
+  --text-muted: #7d726c;
+  --accent: #8f6639;
+  --accent-soft: #b58b5c;
+}
+
+body.theme-light .suggestions {
+  background: #c1bab8;
+  border-radius: 14px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+}
+
+body.theme-light .suggestion-item {
+  color: #4a3f38;
+}
+
+body.theme-light .suggestion-item:hover {
+  background: #b8afa9;
 }

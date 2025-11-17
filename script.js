@@ -22,8 +22,7 @@ function save(key, value) {
 function load(key, defaultValue = null) {
   try {
     const raw = localStorage.getItem(key);
-    if (!raw) return defaultValue;
-    return JSON.parse(raw);
+    return raw ? JSON.parse(raw) : defaultValue;
   } catch {
     return defaultValue;
   }
@@ -69,9 +68,10 @@ function applyTheme() {
 async function searchCity(name, limit = 5) {
   const url = `${GEO_URL}?q=${encodeURIComponent(name)}&limit=${limit}&appid=${API_KEY}`;
   const res = await fetch(url);
-  if (!res.ok) throw new Error("Erro ao buscar cidades");
-  const data = await res.json();
 
+  if (!res.ok) throw new Error("Erro ao buscar cidades");
+
+  const data = await res.json();
   return data.map(c => ({
     name: c.name,
     state: c.state || "",
@@ -132,9 +132,7 @@ function renderCurrent(city, now, tz) {
   if (dateEl) dateEl.textContent = formatDay(now.dt, tz);
 
   const iconEl = document.getElementById("current-icon");
-  if (iconEl && now.weather && now.weather[0]) {
-    iconEl.src = iconUrl(now.weather[0].icon);
-  }
+  if (iconEl && now.weather?.[0]) iconEl.src = iconUrl(now.weather[0].icon);
 }
 
 function renderHourly(forecast, tz) {
@@ -142,7 +140,6 @@ function renderHourly(forecast, tz) {
   if (!box) return;
 
   box.innerHTML = "";
-
   forecast.list.slice(0, 8).forEach(f => {
     const div = document.createElement("div");
     div.className = "hour-item";
@@ -160,7 +157,6 @@ function buildDaily(forecast, tz) {
 
   forecast.list.forEach(f => {
     const d = toLocalDate(f.dt, tz).toISOString().slice(0, 10);
-
     if (!map.has(d)) {
       map.set(d, {
         date: toLocalDate(f.dt, tz),
@@ -184,16 +180,14 @@ function renderWeek(forecast, tz) {
   if (!box) return;
 
   const days = buildDaily(forecast, tz);
-
   box.innerHTML = "";
+
   days.forEach((d, i) => {
     const div = document.createElement("div");
     div.className = "week-item";
     div.innerHTML = `
       <div class="week-left">
-        <div class="week-day">
-          ${i === 0 ? "Hoje" : d.date.toLocaleDateString("pt-BR", { weekday: "short" })}
-        </div>
+        <div class="week-day">${i === 0 ? "Hoje" : d.date.toLocaleDateString("pt-BR", { weekday: "short" })}</div>
         <img src="${iconUrl(d.icon)}" class="week-icon">
         <div class="week-desc">${d.desc}</div>
       </div>
@@ -222,6 +216,8 @@ function setupSearch() {
   const input = document.getElementById("search-input");
   const form = document.getElementById("search-form");
   const list = document.getElementById("suggestions");
+  const locateBtn = document.getElementById("locate-btn");
+
   if (!input || !form || !list) return;
 
   let timer = null;
@@ -237,7 +233,6 @@ function setupSearch() {
       }
 
       const cities = await searchCity(q, 5);
-
       list.innerHTML = "";
       list.style.display = "block";
 
@@ -254,6 +249,40 @@ function setupSearch() {
       });
     }, 400);
   });
+
+  if (locateBtn && "geolocation" in navigator) {
+    locateBtn.addEventListener("click", () => {
+      navigator.geolocation.getCurrentPosition(
+        async pos => {
+          const { latitude, longitude } = pos.coords;
+
+          try {
+            const { now, forecast } = await fetchWeather(latitude, longitude);
+
+            const city = {
+              name: now.name || "Minha localização",
+              state: "",
+              country: now.sys?.country || "",
+              lat: latitude,
+              lon: longitude
+            };
+
+            save(STORAGE.LAST_CITY, city);
+            addFavorite(city);
+
+            const tz = now.timezone || forecast.city.timezone;
+            renderCurrent(city, now, tz);
+            renderHourly(forecast, tz);
+            renderWeek(forecast, tz);
+            renderAir(now, forecast);
+          } catch {
+            alert("Não foi possível carregar o clima da sua localização.");
+          }
+        },
+        () => alert("Não foi possível acessar sua localização.")
+      );
+    });
+  }
 
   form.addEventListener("submit", e => {
     e.preventDefault();
@@ -290,12 +319,14 @@ function renderCities() {
   if (!box) return;
 
   const favs = favoritesList();
+
   if (!favs.length) {
     box.innerHTML = `<p class="helper-text">Nenhuma cidade salva.</p>`;
     return;
   }
 
   box.innerHTML = "";
+
   favs.forEach(c => {
     const row = document.createElement("div");
     row.className = "city-row";
@@ -331,12 +362,14 @@ function renderMap() {
   if (!frame) return;
 
   const city = load(STORAGE.LAST_CITY, null);
+
   if (!city) {
     frame.outerHTML = `<p class="helper-text">Nenhuma cidade selecionada.</p>`;
     return;
   }
 
   const { lat, lon } = city;
+
   frame.src =
     `https://www.openstreetmap.org/export/embed.html?bbox=${lon - 0.2},${lat - 0.2},${lon + 0.2},${lat + 0.2}&layer=mapnik&marker=${lat},${lon}`;
 }
@@ -351,6 +384,7 @@ function initSettings() {
   document.getElementById("theme-light").checked = theme === "light";
 
   const saveBtn = document.getElementById("settings-save");
+
   saveBtn.onclick = () => {
     const unitValue = document.querySelector('input[name="unit"]:checked').value;
     const themeValue = document.querySelector('input[name="theme"]:checked').value;
@@ -363,10 +397,6 @@ function initSettings() {
   };
 }
 
-/* ==========================================================
-   MENU MOBILE — LÓGICA DO BOTÃO, OVERLAY E FECHAMENTO
-========================================================== */
-
 function setupMobileMenu() {
   const btn = document.getElementById("mobile-menu-toggle");
   const overlay = document.getElementById("mobile-menu-overlay");
@@ -374,29 +404,19 @@ function setupMobileMenu() {
 
   if (!btn || !overlay || !sidebar) return;
 
-  function openMenu() {
-    document.body.classList.add("menu-open");
-  }
+  const closeMenu = () => document.body.classList.remove("menu-open");
 
-  function closeMenu() {
-    document.body.classList.remove("menu-open");
-  }
-
-  btn.addEventListener("click", (e) => {
+  btn.addEventListener("click", e => {
     e.stopPropagation();
     document.body.classList.toggle("menu-open");
   });
 
   overlay.addEventListener("click", closeMenu);
 
-  sidebar.addEventListener("click", (e) => {
-    if (e.target.closest(".nav-item")) {
-      closeMenu();
-    }
+  sidebar.addEventListener("click", e => {
+    if (e.target.closest(".nav-item")) closeMenu();
   });
 }
-
-/* ========================================================== */
 
 document.addEventListener("DOMContentLoaded", () => {
   applyTheme();
