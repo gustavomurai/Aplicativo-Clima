@@ -1,9 +1,18 @@
 # 🌦️ **Aplicativo Clima — Dashboard Moderno de Previsão do Tempo**
-### Interface premium • Design responsivo • Busca inteligente • API OpenWeather  
 <br>
 
 ## 🔗 **Acesse o projeto**
 ### 👉 **https://gustavomurai.github.io/Aplicativo-Clima/**
+
+---
+
+## 📌 **Visão Geral**
+
+O **Aplicativo Clima** é um painel moderno e intuitivo para visualizar informações meteorológicas em tempo real.  
+Projetado com foco em **UI/UX**, **responsividade**, **performance** e uma experiência visual limpa que funciona perfeitamente em **desktop**, **tablet** e **mobile**.
+
+Utiliza **HTML, CSS e JavaScript Vanilla**, consumindo dados da **OpenWeather API** e salvando preferências com **LocalStorage**.
+
 
 ---
 
@@ -21,12 +30,7 @@
 
 ---
 
-## 📌 **Visão Geral**
 
-O **Aplicativo Clima** é um painel moderno e intuitivo para visualizar informações meteorológicas em tempo real.  
-Projetado com foco em **UI/UX**, **responsividade**, **performance** e uma experiência visual limpa que funciona perfeitamente em **desktop**, **tablet** e **mobile**.
-
-Utiliza **HTML, CSS e JavaScript Vanilla**, consumindo dados da **OpenWeather API** e salvando preferências com **LocalStorage**.
 
 ---
 
